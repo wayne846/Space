@@ -40,9 +40,9 @@ public class SpecialCircle : MonoBehaviour
     void positionSetUp(){ //設定位置及角度
         int t = Random.Range(0, 4);
         if (t == 0) transform.position = new Vector3(0, 4, 0);
-        if (t == 1) transform.position = new Vector3(7, 0, 0);
+        if (t == 1) transform.position = new Vector3(3, 0, 0);
         if (t == 2) transform.position = new Vector3(0, -4, 0);
-        if (t == 3) transform.position = new Vector3(-7, 0, 0);
+        if (t == 3) transform.position = new Vector3(-3, 0, 0);
         int i = Random.Range(0, 2);
         if (t == 0 || t == 2){ //上下兩側
             if (i == 0) transform.Rotate(0, 0, 0);

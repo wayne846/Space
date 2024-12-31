@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6002635581901339504}
   m_RootOrder: 0
@@ -163,7 +164,8 @@ Transform:
   m_GameObject: {fileID: 5970178511481131440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6002635581901339504}
   m_Father: {fileID: 0}
@@ -270,10 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8844b910ad0f736468f65dae912a4a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedInit: 3
-  speed: 1
+  speedInit: 2
+  speed: 2
   hpInit: 5
-  hp: 5
+  hp: 7
   powerUp: {fileID: 221743940919932756, guid: 74099fc1117d2074da0bcd5b0a5fec03, type: 3}
   freeze: {fileID: 2064400391377478046, guid: 793fae1458050464aab6e704c47aa7f6, type: 3}
   fire: {fileID: 3778547831220431833, guid: b6bd7d3868457e54aa36f753d82443c9, type: 3}
@@ -309,6 +311,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2446867327672875462}
   m_Father: {fileID: 4049313423472390842}

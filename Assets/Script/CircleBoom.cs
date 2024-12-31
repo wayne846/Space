@@ -19,7 +19,7 @@ public class CircleBoom : MonoBehaviour
     }
 
     void Boom(){
-        transform.localScale += new Vector3(0.01f, 0.01f, 0);
+        transform.localScale += new Vector3(0.005f, 0.005f, 0);
         this.gameObject.GetComponent<SpriteRenderer>().color -= new Color(0, 0, 0, 0.01f);
         count += 0.01f;
         if (count > 200) Destroy(this.gameObject);

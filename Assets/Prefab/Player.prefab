@@ -26,7 +26,8 @@ Transform:
   m_GameObject: {fileID: 8384110445874032466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.737718, y: 0.737718, z: 0.737718}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8384110446956583292}
   m_Father: {fileID: 0}
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 4046121825098650210, guid: ea18395969bea3d4ea34d7b4f708171f, type: 3}
+  slip: {fileID: 3164246720679853946, guid: eea6ab5561eb6e649afecde0e2e4b01f, type: 3}
   _fireRate: 40
 --- !u!1 &8384110446956583295
 GameObject:
@@ -76,6 +78,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8384110445874032464}
   m_RootOrder: 0
@@ -184,6 +187,7 @@ MonoBehaviour:
   circle: {fileID: 5970178511481131440, guid: 3eb9f379090f7174e8ad3819eda524f6, type: 3}
   laser: {fileID: 4046121825098650210, guid: ea18395969bea3d4ea34d7b4f708171f, type: 3}
   lightSaber: {fileID: 4986517537601051295, guid: 30ba2fa6112d5da4ba29ff7e3e326de0, type: 3}
+  timer: {fileID: 0}
   _freezeTime: 3
   _fireTime: 10
   _splitTime: 0

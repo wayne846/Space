@@ -7,23 +7,24 @@ public class Laser : MonoBehaviour
     public float speed;  //移動速度(初始值:40)
     public int shootModeInit;
     public int shootMode;
+    public GameObject slip;
     
     void Start()
     {
         if (shootMode == 0){
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);  //朝向滑鼠
+            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(slip.transform.position);  //朝向滑鼠
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         if (shootMode == 1){
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);  //朝向滑鼠
+            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(slip.transform.position);  //朝向滑鼠
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             float t = Random.Range(-15.0f, 15.0f);  //隨機偏移15度
             transform.Rotate(0, 0, t);
         }
         if (shootMode == 2){
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);  //朝向滑鼠
+            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(slip.transform.position);  //朝向滑鼠
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.Rotate(0, 0, 180f);

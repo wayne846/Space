@@ -18,7 +18,9 @@ public class PlayerCollision : MonoBehaviour
     float splitTimer;
     int currentFireRate;  //玩家當前的射速
     bool split;  //雙向射擊是否開啟
+    bool fire;  //散射是否開啟
     float fireRate;  //控制射速用
+    float fireRate2;  //控制射速用
     float circleTriggerTimer;
     
 
@@ -36,12 +38,14 @@ public class PlayerCollision : MonoBehaviour
         fireTimer = 0;
         currentFireRate = Player._fireRate;
         split = false;
+        fire = false;
     }
 
     
     void Update()
     {
         ShootSplit();
+        Fire();
     }
 
     void Loop(){
@@ -55,6 +59,9 @@ public class PlayerCollision : MonoBehaviour
         if (splitTimer <= 0){
             split = false;
         }
+        if (fireTimer <= 0){
+            fire = false;
+        }
 
         freezeTimer -= 0.1f;
         fireTimer -= 0.1f;
@@ -64,7 +71,7 @@ public class PlayerCollision : MonoBehaviour
         if(fireTimer < 0) fireTimer = 0;
         if(splitTimer < 0) splitTimer = 0;
 
-        if(Player._fireRate != 3) currentFireRate = Player._fireRate;
+        if(Player._fireRate != 7) currentFireRate = Player._fireRate;
     }
 
     private void OnTriggerEnter2D(Collider2D other)  //處理玩家的碰撞
@@ -80,8 +87,10 @@ public class PlayerCollision : MonoBehaviour
             freezeTimer += _freezeTime;
         }
         if (other.gameObject.tag == "Fire"){  //超快射速，散射
-            Fire();
+            Player._fireRate = 7;
+            laser.GetComponent<Laser>().shootMode = 1;
             fireTimer += _fireTime;
+            fire = true;
         }
         if (other.gameObject.tag == "Split"){  //雙向射擊
             split = true;
@@ -126,13 +135,23 @@ public class PlayerCollision : MonoBehaviour
         circle.GetComponent<Circle>().speed = 1;
         Circle[] Allcircles = FindObjectsOfType<Circle>();
         foreach (var circles in Allcircles){
-            circles.GetComponent<Circle>().speed = 1;
+            circles.GetComponent<Circle>().speed = 0.7f;
         }
     }
 
     void Fire(){
-        Player._fireRate = 3;
-        laser.GetComponent<Laser>().shootMode = 1;
+        if(!fire){
+            return;
+        }
+        if (fireRate2 > 0){
+            fireRate2 -= Time.deltaTime * 300;
+        }else{
+            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)){
+                GameObject Laser =  Instantiate(laser, transform.position, Quaternion.identity);
+                Laser.GetComponent<Laser>().shootMode = 1;
+                fireRate2 = currentFireRate;
+            }
+        }
     }
 
     void ShootSplit(){

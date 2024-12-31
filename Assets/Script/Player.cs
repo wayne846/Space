@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject bullet;
+    public GameObject slip;
     
     public int _fireRate; //射速 (初始值:40)
 
@@ -21,16 +22,22 @@ public class Player : MonoBehaviour
     }
 
     void LookAtMouse(){  //指向滑鼠
-        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        /*var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
+        if (Input.GetMouseButton(0)){
+            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(slip.transform.position);
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+            
     }
 
     void shoot(){  //如果按下滑鼠或空白鍵，就創造子彈
         if (fireRate > 0){
             fireRate -= Time.deltaTime * 300;
         }else{
-            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)){
+            if (Input.GetMouseButton(0) /*|| Input.GetKey(KeyCode.Space)*/){
                 SoundManager.instance.LaserSound();
                 Instantiate(bullet, transform.position, Quaternion.identity);
                 fireRate = _fireRate;

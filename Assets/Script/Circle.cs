@@ -48,24 +48,33 @@ public class Circle : MonoBehaviour
     }
 
     void MoveToScreenOut(){  //將怪物移到螢幕外
-        int side = Random.Range(0,4);
-        float x = -18f;
+        int side = Random.Range(0,8);
+        float x = -9f;
         float y = -12f;
-        if (side == 0){
+        if (side == 0 || side == 6){
             y = 12f;
-            x = Random.Range(-18.0f, 18.0f);
+            x = Random.Range(-9.0f, 9.0f);
         }
-        if (side == 1){
-            y = Random.Range(-12.0f, 12.0f);
-            x = 18;
+        if (side == 1 || side == 7){
+            y = -12f;
+            x = Random.Range(-9.0f, 9.0f);
+            
         }
         if (side == 2){
-            y = -12f;
-            x = Random.Range(-18.0f, 18.0f);
+            y = Random.Range(-12.0f, -6.0f);
+            x = 9f;
         }
         if (side == 3){
-            y = Random.Range(-12.0f, 12.0f);
-            x = -18f;
+            y = Random.Range(-12.0f, -6.0f);
+            x = -9f;
+        }
+        if (side == 4){
+            y = Random.Range(6.0f, 12.0f);
+            x = 9f;
+        }
+        if (side == 5){
+            y = Random.Range(6.0f, 12.0f);
+            x = -9f;
         }
         transform.position = new Vector3(x, y, 0);
     }
@@ -124,7 +133,7 @@ public class Circle : MonoBehaviour
             if (i == 3)Instantiate(saber, transform.position, Quaternion.identity); //掉落saber
             timer.GetComponent<Timer>().power = 20;
         }else{
-            timer.GetComponent<Timer>().power += 2;
+            timer.GetComponent<Timer>().power += 13;
         }
     }
 

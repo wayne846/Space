@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     public float makeCircleTimeInit;  //生成怪物的時間間隔的初始值(初始值:2)
     public float modeTime;  //切換模式的時間間隔(初始值:10)
     public float levelTime; //增加怪物血量的時間間隔(初始值:30)
-    public float timeDownTime;  //減少怪物生成間隔的時間間隔(初始值:20)
+    public float timeDownTime;  //減少怪物生成間隔的時間間隔(初始值:17)
     public float makeSpecialCircleTime; //生成特殊怪物的時間間隔(初始值:16)
 
     public int power; //掉落道具的機率
@@ -55,7 +55,7 @@ public class Timer : MonoBehaviour
         if (circleTimer <= 0){  //生成怪物
             Makecircle();
             if (mode){
-                circleTimer = makeCircleTime/2;
+                circleTimer = makeCircleTime/1.5f;
             }else{
                 circleTimer = makeCircleTime;
             }
@@ -73,21 +73,22 @@ public class Timer : MonoBehaviour
         if (levelUpTimer <= 0){  //增加血量
             circle.GetComponent<Circle>().LevelUP();
             levelUpTimer = levelTime;
-            if (makeCircleTime <= 1.2) levelUpTimer -= 10;
+            if (makeCircleTime <= 1.6) levelUpTimer -= 15;
             print("level Up");
         }
         if (timeDownTimer <= 0 && makeCircleTime > 1){ //減少怪物生成間隔
             makeCircleTime -= 0.1f;
             timeDownTimer = timeDownTime;
+            //if (makeCircleTime <= 1.5) makeCircleTime += 0.05f;
             print(makeCircleTime);
         }
-        if (specialCircleTimer <= 0 && circle.GetComponent<Circle>().hp >= 14){  //生成特殊怪物
+        if (specialCircleTimer <= 0 && circle.GetComponent<Circle>().hp >= 11){  //生成特殊怪物
             MakeSpecialCircle();
             specialCircleTimer = makeSpecialCircleTime; //16秒
-            if (circle.GetComponent<Circle>().hp > 24)specialCircleTimer -= 6; //10秒
-            if (circle.GetComponent<Circle>().hp > 30)specialCircleTimer -= 2; //8秒
-            if (circle.GetComponent<Circle>().hp > 35)specialCircleTimer -= 1; //7秒
-            if (circle.GetComponent<Circle>().hp > 40)specialCircleTimer -= 1; //6秒
+            if (circle.GetComponent<Circle>().hp > 20)specialCircleTimer -= 7; //9秒
+            if (circle.GetComponent<Circle>().hp > 24)specialCircleTimer -= 2; //7秒
+            if (circle.GetComponent<Circle>().hp > 30)specialCircleTimer -= 1; //6秒
+            if (circle.GetComponent<Circle>().hp > 35)specialCircleTimer -= 1; //5秒
         }
 
         specialCircleTimer -= 0.1f;
